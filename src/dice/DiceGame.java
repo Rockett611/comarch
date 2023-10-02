@@ -9,28 +9,37 @@ public class DiceGame {
 
         int score = 0;
         int tempScore = 0;
-            while (tempScore < 20) {
-                if (option() == 1) {
-                    int rolled = roll();
-                    if (rolled == 1) {
-                        System.out.println("straciłeś wszystkie punkty :(");
-                        tempScore = 0;
-                        option();
-                    } else {
-                        tempScore += rolled;
-                        System.out.println("wyrzuciłeś " + rolled);
-                        System.out.println("Twój wynik to " + tempScore);
-                        option();
-                    }
+        while (tempScore < 20) {
+            int answer = option();
+            if (answer == 1) {
+                int rolled = roll();
+                if (rolled == 1) {
+                    System.out.println("straciłeś wszystkie punkty :(");
+                    tempScore = 0;
+                    answer = option();
+                } else {
+                    tempScore += rolled;
+                    System.out.println("wyrzuciłeś " + rolled);
+                    System.out.println("Twój wynik to " + tempScore);
+                    answer = option();
                 }
+
+            } else if (answer == 0) {
+                score = tempScore;
+                tempScore = 0;
+                System.out.println("Twój wynik to " + tempScore);
+            } else {
+                System.out.println("wprowadź poprawną odpowiedź");
+                answer = option();
             }
+        }
 
 
     }
 
     public static int roll() {
         Random random = new Random();
-        int diceThrow = random.nextInt();
+        int diceThrow = random.nextInt(7);
 
         while (diceThrow == 0) {
             roll();
@@ -38,6 +47,7 @@ public class DiceGame {
 
         return diceThrow;
     }
+
     public static int option() {
         Scanner input = new Scanner(System.in);
 
