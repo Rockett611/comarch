@@ -1,5 +1,6 @@
 package dice;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -52,14 +53,19 @@ public class DiceGame {
 
         System.out.println("rzucamy (1) czy pas (0)?: ");
         int answer = input.nextInt();
-        if (answer == 1) {
-            System.out.println("gramy");
-
-        } else if (answer == 0) {
-            System.out.println("pas");
-
-        } else {
-            System.out.println("podaj 1 albo 0");
+        try {
+            if (answer == 1) {
+                System.out.println("gramy");
+                return answer;
+            } else if (answer == 0) {
+                System.out.println("pas");
+                return answer;
+            } else {
+                System.out.println("podaj 1 albo 0");
+                option();
+            }
+        } catch (InputMismatchException ime) {
+            System.out.println("musisz wprowadzić cyfrę 1 lub 0");
             option();
         }
         return answer;
