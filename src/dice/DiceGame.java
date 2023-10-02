@@ -16,18 +16,17 @@ public class DiceGame {
                 if (rolled == 1) {
                     System.out.println("straciłeś wszystkie punkty :(");
                     tempScore = 0;
-                    answer = option();
                 } else {
                     tempScore += rolled;
                     System.out.println("wyrzuciłeś " + rolled);
                     System.out.println("Twój wynik to " + tempScore);
-                    answer = option();
                 }
 
             } else if (answer == 0) {
                 score = tempScore;
                 tempScore = 0;
-                System.out.println("Twój wynik to " + tempScore);
+                System.out.println("Twój wynik to " + score);
+                break;
             } else {
                 System.out.println("wprowadź poprawną odpowiedź");
                 answer = option();
