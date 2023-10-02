@@ -52,22 +52,32 @@ public class DiceGame {
         Scanner input = new Scanner(System.in);
 
         System.out.println("rzucamy (1) czy pas (0)?: ");
-        int answer = input.nextInt();
+
         try {
-            if (answer == 1) {
-                System.out.println("gramy");
-                return answer;
-            } else if (answer == 0) {
-                System.out.println("pas");
-                return answer;
-            } else {
-                System.out.println("podaj 1 albo 0");
-                option();
-            }
+            int answer = input.nextInt();
         } catch (InputMismatchException ime) {
             System.out.println("musisz wprowadzić cyfrę 1 lub 0");
             option();
         }
-        return answer;
+
+
+
+//
+//        try {
+//            if (answer == 1) {
+//                System.out.println("gramy");
+//                return answer;
+//            } else if (answer == 0) {
+//                System.out.println("pas");
+//                return answer;
+//            } else {
+//                System.out.println("podaj 1 albo 0");
+//                option();
+//            }
+//        } catch (InputMismatchException ime) {
+//            System.out.println("musisz wprowadzić cyfrę 1 lub 0");
+//            option();
+//        }
+//        return answer;
     }
 }
