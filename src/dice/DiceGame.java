@@ -17,8 +17,6 @@ public class DiceGame {
                     System.out.println("wyrzuciłeś " + rolled);
                     System.out.println("straciłeś wszystkie punkty :(");
                     tempScore = 0;
-                } else if (rolled == 0) {
-                    System.out.println("kość wypadła za stół, rzuć jeszcze raz");
                 } else {
                     tempScore += rolled;
                     System.out.println("wyrzuciłeś " + rolled);
@@ -39,12 +37,7 @@ public class DiceGame {
 
     public static int roll() {
         Random random = new Random();
-        int diceThrow = random.nextInt(7);
-
-        if (diceThrow == 0) {
-            roll();
-        }
-
+        int diceThrow = random.nextInt(6) + 1;
         return diceThrow;
     }
 
@@ -54,9 +47,9 @@ public class DiceGame {
         System.out.println("rzucamy (1) czy pas (0)?: ");
         String answer = input.next();
 
-        if (!answer.equals("1") && !answer.equals("0") && answer.isEmpty()) {
+        if (!answer.equals("1") && !answer.equals("0")) {
             System.out.println("wybierz opcję 1 lub 0");
-            option();
+            return option();
         }
 
 //        input.close();
