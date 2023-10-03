@@ -7,31 +7,23 @@ public class DiceGame {
 
     public static void main(String[] args) {
 
-        int score = 0;
-        int tempScore = 0;
-        while (tempScore < 30) {
-            int answer = option();
-            if (answer == 1) {
-                int rolled = roll();
-                if (rolled == 1) {
-                    System.out.println("wyrzuciłeś " + rolled);
-                    System.out.println("straciłeś wszystkie punkty :(");
-                    tempScore = 0;
-                } else {
-                    tempScore += rolled;
-                    System.out.println("wyrzuciłeś " + rolled);
-                    System.out.println("Twój wynik to " + tempScore);
-                }
+        Player playerOne = new Player("Pedro");
+        Player playerTwo = new Player("Zenon");
 
-            } else if (answer == 0) {
-                score = tempScore;
-                System.out.println("Twój wynik to " + score);
-                break;
+        boolean czyPlayerOne = true;
+
+        System.out.println("zaczyna Player 1 - " + playerOne.getName());
+        while ((playerOne.getTempScore() + playerOne.getScore()) < 30 &&
+                (playerTwo.getTempScore() + playerTwo.getScore() <30)) {
+            if (czyPlayerOne) {
+                System.out.println("rzuca gracz " + playerOne.getName());
+                playerOne.round();
             } else {
-                System.out.println("wprowadź poprawną odpowiedź");
+                System.out.println("rzuca gracz " + playerTwo.getName());
+                playerTwo.round();
             }
+            czyPlayerOne = !czyPlayerOne;
         }
-
 
     }
 
