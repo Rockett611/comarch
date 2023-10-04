@@ -17,17 +17,9 @@ public class GameLogic {
         System.out.println("postanowiłeś przygarnąć stworka");
         stworek.setName(getCreatureName());
         stworek.printCreatureStats();
+        for (int i = 0; i < 3; i++) {
+            executionOfActivities();
 
-        int activity = selectActivities();
-        if (activity == 1) {
-            stworek.play();
-            stworek.printCreatureStats();
-        } else if (activity == 2) {
-            stworek.eat();
-            stworek.printCreatureStats();
-        } else {
-            stworek.sleep();
-            stworek.printCreatureStats();
         }
     }
 
@@ -42,5 +34,17 @@ public class GameLogic {
         System.out.println("2. nakarm");
         System.out.println("3. połóż spać");
         return scan.nextInt();
+    }
+
+    private void executionOfActivities() {
+        int activity = selectActivities();
+        if (activity == 1) {
+            stworek.play();
+        } else if (activity == 2) {
+            stworek.eat();
+        } else {
+            stworek.sleep();
+        }
+        stworek.printCreatureStats();
     }
 }

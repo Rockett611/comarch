@@ -53,7 +53,25 @@ public class Creature {
                 moodLevel);
     }
 
-// get
+    public void checkStats() {
+        checkFood();
+        checkMood();
+        checkHealth();
+    }
+
+    private void checkHealth() {
+    }
+
+    private void checkMood() {
+    }
+
+    private void checkFood() {
+        if (foodLevel > 50) {
+            System.out.println("jest ok");
+        }
+    }
+
+    // get
     public String getName() {
         return name;
     }
